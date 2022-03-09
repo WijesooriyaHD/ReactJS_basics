@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import './form.css'
+import {userSchema} from '../Validations/formValidation'
+import * as yup from "yup";
 class Form extends Component {
     
     constructor(props){
         super(props)
 
         this.state = {
-            age : ' ',
-            gender:' ',
-            height:' ',
-            weight: ' ',
-            vaccine:' ',
-            blood:' ',
-            livingArea: ' '
+            age : '',
+            gender:'',
+            height:'',
+            weight: '',
+            vaccine:'',
+            blood:'',
+            livingArea: ''
         }
     }
 
@@ -59,11 +61,43 @@ class Form extends Component {
       })
     }
 
-    handleSubmit= event =>{
-        alert(`${this.state.age} ${this.state.gender} ${this.state.height} 
-        ${this.state.weight} ${this.state.vaccine}
-        ${this.state.blood} ${this.state.livingArea}`)
+    handleSubmit= async (event) =>{
+
         event.preventDefault()
+
+        let formData={
+          age:this.state.age,
+          gender:this.state.gender,
+          height:this.state.height,
+          weight:this.state.weight,
+          vaccine:this.state.vaccine,
+          blood:this.state.blood,
+          livingArea:this.state.livingArea
+
+        };
+
+        const isValid= await userSchema.isValid(formData)
+        console.log(isValid)
+
+        if(isValid===true){
+          alert("Hello ! \n"+
+          "This is what we received :\n"
+          +"Age = "+`${this.state.age}`+"\n"
+          +"Gender = "+`${this.state.gender}` +"\n"
+          +"Height =  "+`${this.state.height}` +"\n"
+          +"Weight =  "+`${this.state.weight}`+"\n"
+          +"Vaccine Type =  "+`${this.state.vaccine}`+"\n"
+          +"Blood Type =  "+`${this.state.blood}` +"\n"
+          +"Living Area =  "+ `${this.state.livingArea}`)
+        }else{
+
+          alert("Invalid Input")
+        
+          
+        }
+
+         
+          
     }
     
 
@@ -89,6 +123,7 @@ class Form extends Component {
                     <label  className="form-label">Gender</label>
                     <select className="form-select" value={this.state.gender} 
                     onChange={this.handleGender} >
+                              <option value=''>  </option>
                               <option value='Male'> Male </option>
                               <option value='Female'> Female </option>
 
@@ -123,6 +158,7 @@ class Form extends Component {
                         <label  className="form-label">Vaccine Type</label>
                         <select className="form-select" value={this.state.vaccine} 
                         onChange={this.handleVaccine}>
+                                  <option value=''>  </option>
                                   <option value='Pfizer'> Pfizer </option>
                                   <option value='Moderna'> Moderna </option>
                                   <option value='Sinopharm'> Sinopharm</option>
@@ -135,6 +171,7 @@ class Form extends Component {
                     <label  className="form-label">Blood Group</label>
                     <select className="form-select" value={this.state.blood} 
                     onChange={this.handleBlood}>
+                              <option value=''>  </option>
                               <option value='A+'> A+ </option>
                               <option value='A-'> A- </option>
                               <option value='AB+'> AB+ </option>
@@ -156,6 +193,7 @@ class Form extends Component {
                     <label  className="form-label">Living Area</label>
                     <select className="form-select" value={this.state.livingArea} 
                     onChange={this.handleLivingArea}>
+                              <option value=''>  </option>
                               <option value='Downtown'> Downtown </option>
                               <option value='Outskirt'> Outskirt</option>
                               
