@@ -1,0 +1,46 @@
+body{
+
+    background-image:linear-gradient(rgba(69, 128, 88, 0.7),#030a24), url(../Assets/vaccination.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;;
+}
+
+
+.topic{
+    text-align: center;
+    color:white;
+    margin: auto;
+    padding-top: 3.5cm;
+    font-size:70px;
+
+}
+
+.button1{
+    padding-top: 3cm;
+}
+.button2{
+    margin-top: 1cm;
+}
+
+.btn-c{
+
+    background-color:aquamarine;
+    font-size:larger;
+    font-weight: bold;
+    border-radius: 0.3cm;
+    border-style: double;
+    border-width: thick;
+   
+}
+
+.btn-a{
+
+    background-color:bisque;
+    font-size:larger;
+    font-weight: bold;
+    border-radius: 0.3cm;
+    border-style: double;
+    border-width: thick;
+
+}

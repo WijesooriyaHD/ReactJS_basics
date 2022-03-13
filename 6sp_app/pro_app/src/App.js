@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Form from './Components/form';
-import Home from './Components/home';
-import About from './Components/about';
+import Form from './Pages/form';
+import Home from './Pages/home';
+import About from './Pages/about';
 import {Route,Routes , Link} from "react-router-dom"
 
 function App() {
